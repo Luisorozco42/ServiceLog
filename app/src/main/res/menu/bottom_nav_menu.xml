@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragmentMenu"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/Fragmentlaboratorios"
+        android:icon="@drawable/baseline_screen_search_desktop_24"
+        android:title="Labs"/>
+
+    <item
+        android:id="@+id/fragmentDiagnostico"
+        android:icon="@drawable/baseline_image_24"
+        android:title="Diagnostico"/>
+
+    <item
+        android:id="@+id/fragmentGestionMantenimiento"
+        android:icon="@drawable/baseline_add_chart_24"
+        android:title="Mantenimiento"/>
+
+    <item
+        android:id="@+id/fragmentConfiguracionUsuario"
+        android:icon="@drawable/baseline_supervised_user_circle_24"
+        android:title="Usuario"
+        />
+
+
+</menu>
+

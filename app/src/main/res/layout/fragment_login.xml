@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.usuario.view.FragmentLogin">
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical">
+
+           <com.google.android.material.imageview.ShapeableImageView
+               android:id="@+id/logo"
+               android:layout_width="200dp"
+               android:layout_height="200dp"
+               android:layout_marginTop="30dp"
+               android:scaleType="centerCrop"
+               android:layout_gravity="center"
+               app:shapeAppearance="@style/CircularImageView"
+               app:srcCompat="@raw/fondo_azul_largo"
+               />
+
+           <TextView
+               android:id="@+id/tvUsuario"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginEnd="210dp"
+               android:layout_margin="10dp"
+               android:text="Usuario"
+               android:textSize="30sp"
+               android:textStyle="bold"/>
+
+           <com.google.android.material.textfield.TextInputLayout
+               android:id="@+id/ilUser"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="10dp"
+               android:layout_marginTop="10dp"
+               android:layout_marginRight="10dp"
+               app:layout_constraintBottom_toTopOf="@+id/ilPass"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintHorizontal_bias="0.526"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="@+id/tvUsuario"
+               app:layout_constraintVertical_bias="0.381">
+
+               <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/txtUser"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="Ingrese su usuario"
+                   tools:text="Moreno32"
+                   android:inputType="text" />
+           </com.google.android.material.textfield.TextInputLayout>
+
+
+           <TextView
+               android:id="@+id/tvPasword"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginEnd="150dp"
+               android:text="Password"
+               android:textSize="30sp"
+               android:textStyle="bold"
+               android:layout_margin="10dp"/>
+
+           <com.google.android.material.textfield.TextInputLayout
+               android:id="@+id/ilPass"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="10dp"
+               android:layout_marginTop="10dp"
+               android:layout_marginRight="10dp"
+               app:endIconMode="password_toggle"
+               android:hint="Ingrese su contraseña">
+
+
+               <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/txtPassword"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:inputType="textPassword" />
+           </com.google.android.material.textfield.TextInputLayout>
+
+           <Button
+               android:id="@+id/btnIniciar"
+               android:layout_width="300dp"
+               android:layout_height="wrap_content"
+               android:layout_margin="10dp"
+               android:text="Iniciar Sesión"
+               android:textSize="20sp"
+               android:layout_gravity="center"
+               />
+
+           <TextView
+               android:id="@+id/tvRegistro"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_margin="10dp"
+               android:text="Registrarse"
+               android:textSize="18sp"
+               android:textColor="#0000ff"/>
+
+       </LinearLayout>
+   </ScrollView>
+</FrameLayout>

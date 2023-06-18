@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="boton">#509EA6</color>
+    <color name="fondo">#F8E6B1</color>
+    <color name="registrase">#7FE1ED</color>
+    <color name="soft_green">#72BAB0</color>
+    <color name="Uca">#001b36</color>
+    <color name="GrisUca">#bac3cc</color>
+    <color name="green">#00c942</color>
+    <color name="red">#cc0605</color>
+</resources>

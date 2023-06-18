@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvMaintenance"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp"
+    app:cardUseCompatPadding="true">
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="375dp"
+        android:layout_height="170dp"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+            <ImageView
+                android:id="@+id/iconoCvComputadora"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                app:srcCompat="@drawable/mantenimiento"/>
+
+            <LinearLayout
+                android:id="@+id/datos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/iconoCvComputadora"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvServiceTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:padding="3dp"
+                    android:text="ServiceTag:"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtServiceTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:padding="3dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:text="CN-009NK2-73846-65N-0P05" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:padding="3dp"
+                        android:text="Laboratorio: "
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtLab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Laboratorio P1"
+                        android:textStyle="bold"
+                        android:padding="3dp"
+                        android:layout_marginTop="10dp"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Creado el día :"
+                        android:textStyle="bold"
+                        android:padding="3dp"
+                        android:layout_marginStart="10dp"
+                        android:textSize="14sp"/>
+
+                    <TextView
+                        android:id="@+id/txtFecha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="yyyy-MM-dd"
+                        android:textStyle="bold"
+                        android:padding="3dp"
+                        android:layout_marginStart="5dp"
+                        android:textSize="14sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivEdit"
+                    android:layout_width="39dp"
+                    android:layout_height="55dp"
+                    android:background="@color/GrisUca"
+                    app:shapeAppearance="@style/CircularImageView"
+                    app:srcCompat="@drawable/edit_icon"
+                    />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivDelete"
+                    android:layout_width="45dp"
+                    android:layout_height="55dp"
+                    android:background="@color/GrisUca"
+                    app:shapeAppearance="@style/CircularImageView"
+                    app:srcCompat="@drawable/delete_icon"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

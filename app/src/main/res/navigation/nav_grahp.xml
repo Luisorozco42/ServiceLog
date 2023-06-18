@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_grahp"
+    app:startDestination="@id/fragmentLogin">
+
+    <fragment
+        android:id="@+id/fragmentLogin"
+        android:name="com.example.servivelog.ui.usuario.view.FragmentLogin"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentMenu"
+            app:destination="@id/fragmentMenu" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentRegistroUsuario"
+            app:destination="@id/fragmentRegistroUsuario" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_acercaDe"
+            app:destination="@id/acercaDe" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentMenu"
+        android:name="com.example.servivelog.ui.usuario.view.FragmentMenu"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" />
+    <fragment
+        android:id="@+id/fragmentRegistroUsuario"
+        android:name="com.example.servivelog.ui.usuario.view.FragmentRegistroUsuario"
+        android:label="fragment_registro_usuario"
+        tools:layout="@layout/fragment_registro_usuario" />
+    <fragment
+        android:id="@+id/fragmentConfiguracionUsuario"
+        android:name="com.example.servivelog.ui.usuario.view.FragmentConfiguracionUsuario"
+        android:label="fragment_configuracion_usuario"
+        tools:layout="@layout/fragment_configuracion_usuario" />
+    <fragment
+        android:id="@+id/fragmentDiagnostico"
+        android:name="com.example.servivelog.ui.gestiondiagnostico.view.FragmentDiagnostico"
+        android:label="fragment_diagnostico"
+        tools:layout="@layout/fragment_diagnostico" >
+        <action
+            android:id="@+id/action_fragmentDiagnostico_to_fragmentEditarDiagnostico"
+            app:destination="@id/fragmentEditarDiagnostico" />
+        <action
+            android:id="@+id/action_fragmentDiagnostico_to_fragmentAgregarDiagnostico"
+            app:destination="@id/fragmentAgregarDiagnostico" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentEditarDiagnostico"
+        android:name="com.example.servivelog.ui.gestiondiagnostico.view.FragmentEditarDiagnostico"
+        android:label="fragment_editar_diagnostico"
+        tools:layout="@layout/fragment_editar_diagnostico" >
+        <argument
+            android:name="diagnosis"
+            app:argType="com.example.servivelog.domain.model.diagnosis.DiagnosisItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAgregarDiagnostico"
+        android:name="com.example.servivelog.ui.gestiondiagnostico.view.FragmentAgregarDiagnostico"
+        android:label="fragment_agregar_diagnostico"
+        tools:layout="@layout/fragment_agregar_diagnostico" />
+    <fragment
+        android:id="@+id/fragmentAgregarLaboratorio"
+        android:name="com.example.servivelog.ui.gestionlaboratorio.view.FragmentAgregarLaboratorio"
+        android:label="fragment_agregar_laboratorio"
+        tools:layout="@layout/fragment_agregar_laboratorio" />
+    <fragment
+        android:id="@+id/fragmentAgregarMantenimiento"
+        android:name="com.example.servivelog.ui.gestionmantenimiento.view.FragmentAgregarMantenimiento"
+        android:label="fragment_agregar_mantenimiento"
+        tools:layout="@layout/fragment_agregar_mantenimiento" >
+        <action
+            android:id="@+id/action_fragmentAgregarMantenimiento_to_fragmentGestionTipoMant"
+            app:destination="@id/fragmentGestionTipoMant" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentEditMantenimiento"
+        android:name="com.example.servivelog.ui.gestionmantenimiento.view.FragmentEditMantenimiento"
+        android:label="fragment_edit_mantenimiento"
+        tools:layout="@layout/fragment_edit_mantenimiento" >
+        <argument
+            android:name="mantenimiento"
+            app:argType="com.example.servivelog.domain.model.mantenimiento.MantenimientoCUDItem" />
+        <action
+            android:id="@+id/action_fragmentEditMantenimiento_to_fragmentGestionTipoMant"
+            app:destination="@id/fragmentGestionTipoMant" />
+    </fragment>
+    <fragment
+        android:id="@+id/Fragmentlaboratorios"
+        android:name="com.example.servivelog.ui.gestionlaboratorio.view.FragmentLaboratorios"
+        android:label="fragment_laboratorios"
+        tools:layout="@layout/fragment_laboratorios" >
+        <action
+            android:id="@+id/action_Fragmentlaboratorios_to_fragmentEditarLaboratorio2"
+            app:destination="@id/fragmentEditarLaboratorio" />
+        <action
+            android:id="@+id/action_Fragmentlaboratorios_to_fragmentAgregarLaboratorio"
+            app:destination="@id/fragmentAgregarLaboratorio" />
+        <action
+            android:id="@+id/action_Fragmentlaboratorios_to_gestionarComputadora"
+            app:destination="@id/gestionarComputadora" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentGestionMantenimiento"
+        android:name="com.example.servivelog.ui.gestionmantenimiento.view.FragmentGestionMantenimiento"
+        android:label="fragment_gestion_mantenimiento"
+        tools:layout="@layout/fragment_gestion_mantenimiento" >
+        <action
+            android:id="@+id/action_fragmentGestionMantenimiento_to_fragmentAgregarMantenimiento"
+            app:destination="@id/fragmentAgregarMantenimiento" />
+        <action
+            android:id="@+id/action_fragmentGestionMantenimiento_to_fragmentEditMantenimiento"
+            app:destination="@id/fragmentEditMantenimiento" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentEditarLaboratorio"
+        android:name="com.example.servivelog.ui.gestionlaboratorio.view.FragmentEditarLaboratorio"
+        android:label="fragment_editar_laboratorio"
+        tools:layout="@layout/fragment_editar_laboratorio" >
+        <argument
+            android:name="lab"
+            app:argType="com.example.servivelog.domain.model.lab.LabItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAgregarComputadora"
+        android:name="com.example.servivelog.ui.gestioncomputadora.view.FragmentAgregarComputadora"
+        android:label="fragment_agregar_computadora"
+        tools:layout="@layout/fragment_agregar_computadora" >
+        <argument
+            android:name="ubicacion"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/gestionarComputadora"
+        android:name="com.example.servivelog.ui.gestioncomputadora.view.GestionarComputadora"
+        android:label="fragment_gestionar_computadora"
+        tools:layout="@layout/fragment_gestionar_computadora" >
+        <action
+            android:id="@+id/action_gestionarComputadora_to_fragmentAgregarComputadora"
+            app:destination="@id/fragmentAgregarComputadora" />
+        <action
+            android:id="@+id/action_gestionarComputadora_to_fragmentEditarComputadora"
+            app:destination="@id/fragmentEditarComputadora" />
+        <argument
+            android:name="laboratorio"
+            app:argType="com.example.servivelog.domain.model.lab.LabItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentEditarComputadora"
+        android:name="com.example.servivelog.ui.gestioncomputadora.view.FragmentEditarComputadora"
+        android:label="fragment_editar_computadora"
+        tools:layout="@layout/fragment_editar_computadora" >
+        <argument
+            android:name="computer"
+            app:argType="com.example.servivelog.domain.model.computer.ComputerItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentGestionTipoMant"
+        android:name="com.example.servivelog.ui.gestiontipomantenimiento.view.FragmentGestionTipoMant"
+        android:label="fragment_gestion_tipo_mant"
+        tools:layout="@layout/fragment_gestion_tipo_mant" >
+        <action
+            android:id="@+id/action_fragmentGestionTipoMant_to_fragmentAgregarTipoMant"
+            app:destination="@id/fragmentAgregarTipoMant" />
+        <action
+            android:id="@+id/action_fragmentGestionTipoMant_to_fragmentEditTipoMant"
+            app:destination="@id/fragmentEditTipoMant" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAgregarTipoMant"
+        android:name="com.example.servivelog.ui.gestiontipomantenimiento.view.FragmentAgregarTipoMant"
+        android:label="fragment_agregar_tipo_mant"
+        tools:layout="@layout/fragment_agregar_tipo_mant" />
+    <fragment
+        android:id="@+id/fragmentEditTipoMant"
+        android:name="com.example.servivelog.ui.gestiontipomantenimiento.view.FragmentEditTipoMant"
+        android:label="fragment_edit_tipo_mant"
+        tools:layout="@layout/fragment_edit_tipo_mant" >
+        <argument
+            android:name="tipoMant"
+            app:argType="com.example.servivelog.domain.model.tipoMantenimiento.TipoMantItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/acercaDe"
+        android:name="com.example.servivelog.ui.gestioneasteregg.AcercaDe"
+        android:label="fragment_acerca_de"
+        tools:layout="@layout/fragment_acerca_de" />
+</navigation>

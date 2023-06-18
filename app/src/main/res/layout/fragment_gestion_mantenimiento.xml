@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.gestionmantenimiento.view.FragmentGestionMantenimiento">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Lista Mantenimiento"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fbtnagregar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="add"
+                android:src="@drawable/baseline_add_24"
+                app:backgroundTint="@color/GrisUca"/>
+
+        </LinearLayout>
+            <EditText
+                android:id="@+id/etServiceTag"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_margin="10dp"
+                android:hint="Buscar por Service Tag"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                tools:text="CN-009NK2-73846-65N-0P05" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Inicio: "
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etFechaIn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_marginEnd="10dp"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/calendar_icon"
+                    android:focusable="false"
+                    android:imeOptions="actionDone"
+                    android:inputType="date"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textSize="18sp"
+                    android:textStyle="italic"
+                    tools:text=" yyyy-MM-dd" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fin: "
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etFechaFin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_marginEnd="10dp"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/calendar_icon"
+                    android:focusable="false"
+                    android:imeOptions="actionDone"
+                    android:inputType="date"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textSize="18sp"
+                    android:textStyle="italic"
+                    tools:text=" yyyy-MM-dd" />
+            </LinearLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Laboratorio: "
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:popupBackground="@color/white"
+                android:padding="8dp"
+                android:gravity="center_vertical"
+                android:spinnerMode="dropdown" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <Button
+            android:id="@+id/btnClean"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Limpiar Filtros"
+            android:layout_margin="10dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMantenimiento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
+        </ScrollView>
+    </LinearLayout>
+
+</FrameLayout>
