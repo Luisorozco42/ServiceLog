@@ -3,8 +3,9 @@ package com.example.servivelog.ui.gestiondiagnostico.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.servivelog.domain.diagnosisusecase.CudDiagnosis
-import com.example.servivelog.domain.diagnosisusecase.ReadDiagnosis
+import com.example.servivelog.domain.ComputerUseCase
+import com.example.servivelog.domain.DiagnosisUseCase
+import com.example.servivelog.domain.LaboratoryUseCase
 import com.example.servivelog.domain.model.computer.ComputerItem
 import com.example.servivelog.domain.model.diagnosis.DiagnosisItem
 import com.example.servivelog.domain.model.diagnosis.InsertDiagnosis
@@ -15,8 +16,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GestioDiagnosisViewModel @Inject constructor(
-    private val readDiagnosis: ReadDiagnosis,
-    private val cudDiagnosis: CudDiagnosis
+    private val diagnosisUseCase: DiagnosisUseCase,
+    private val computerUseCase: ComputerUseCase,
+    private val laboratoryUseCase: LaboratoryUseCase
 ) : ViewModel() {
 
     val modeloDiagnosis = MutableLiveData<List<DiagnosisItem>>()
@@ -26,7 +28,7 @@ class GestioDiagnosisViewModel @Inject constructor(
     fun onCreate() {
         viewModelScope.launch {
             loading.postValue(true)
-            var resultado = readDiagnosis()
+            var resultado = diagnosisUseCase()
 
             if (!resultado.isEmpty()) {
                 modeloDiagnosis.postValue(resultado)
@@ -42,30 +44,27 @@ class GestioDiagnosisViewModel @Inject constructor(
 
     fun insertDiagnosi(insertDiagnosis: InsertDiagnosis) {
         viewModelScope.launch {
-            cudDiagnosis.insertDiagnosis(insertDiagnosis)
+            diagnosisUseCase.insertDiagnosis(insertDiagnosis)
         }
     }
 
     fun updateDiagnosis(diagnosisItem: DiagnosisItem) {
         viewModelScope.launch {
-            cudDiagnosis.updateDiagnosis(diagnosisItem)
+            diagnosisUseCase.updateDiagnosis(diagnosisItem)
         }
     }
 
     fun deleteDiagnosis(diagnosisItem: DiagnosisItem) {
         viewModelScope.launch {
-            cudDiagnosis.deleteDiagnosis(diagnosisItem)
+            diagnosisUseCase.deleteDiagnosis(diagnosisItem)
         }
     }
 
     suspend fun getAllLaboratories(): List<LabItem> {
-        return cudDiagnosis.getallLaboratories()
+        return laboratoryUseCase()
     }
 
     suspend fun getAllComputer(): List<ComputerItem> {
-        return cudDiagnosis.getAllComputer()
+        return computerUseCase()
     }
-
-
-
 }

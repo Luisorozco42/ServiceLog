@@ -8,6 +8,7 @@ import com.example.servivelog.domain.model.diagnosis.InsertDiagnosis
 
 @Entity("tblDiagnosis")
 data class DiagnosisEntity(
+
     @PrimaryKey(autoGenerate = true) @ColumnInfo("idDiag") var idD: Int = 0,
     @ColumnInfo("lab")
     var nombrelab: String,

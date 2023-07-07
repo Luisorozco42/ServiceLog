@@ -63,7 +63,7 @@ class FragmentConfiguracionUsuario : Fragment() {
                 userNamae = ActiveUser.userName,
                 nombre = ActiveUser.nombre,
                 apellido = ActiveUser.apellido,
-                correo =  ActiveUser.correo,
+                correo = ActiveUser.correo,
                 clave = ActiveUser.clave
             )
 
@@ -72,7 +72,6 @@ class FragmentConfiguracionUsuario : Fragment() {
             false //esto funciona para dejar de mostrar el navigation view despues de cerrar sesion
         val navController = Navigation.findNavController(configuracionUsaurioBinding.root)
         navController.popBackStack()
-
     }
 
     private fun guardarCambios() {
@@ -81,37 +80,46 @@ class FragmentConfiguracionUsuario : Fragment() {
 
         if (contrasena != ActiveUser.clave) {
             if (contrasena == confirmar) {
-                ActiveUser.userName = configuracionUsaurioBinding.etUser.text.toString()
-                ActiveUser.nombre = configuracionUsaurioBinding.etNombre.text.toString()
-                ActiveUser.apellido = configuracionUsaurioBinding.etApellido.text.toString()
-                ActiveUser.correo = configuracionUsaurioBinding.etCorreo.text.toString()
-                ActiveUser.clave = configuracionUsaurioBinding.etContraseA.text.toString()
-                val userItem =
-                    UserItem(
-                        idU = ActiveUser.idU,
-                        userNamae = ActiveUser.userName,
-                        nombre = ActiveUser.nombre,
-                        apellido = ActiveUser.apellido,
-                        correo =  ActiveUser.correo,
-                        clave = ActiveUser.clave
-                    )
-                userVielModel.updateUser(userItem)
-                Toast.makeText(
-                    requireContext(),
-                    "La contraseña se ha guardado correctamente",
-                    Toast.LENGTH_SHORT
-                ).show()
+                if (contrasena.isNotEmpty() && confirmar.isNotEmpty()) {
+                    ActiveUser.userName = configuracionUsaurioBinding.etUser.text.toString()
+                    ActiveUser.nombre = configuracionUsaurioBinding.etNombre.text.toString()
+                    ActiveUser.apellido = configuracionUsaurioBinding.etApellido.text.toString()
+                    ActiveUser.correo = configuracionUsaurioBinding.etCorreo.text.toString()
+                    ActiveUser.clave = configuracionUsaurioBinding.etContraseA.text.toString()
 
-                configuracionUsaurioBinding.etContraseA.setText("")
-                configuracionUsaurioBinding.etConfirmacion.setText("")
+                    val userItem =
+                        UserItem(
+                            idU = ActiveUser.idU,
+                            userNamae = ActiveUser.userName,
+                            nombre = ActiveUser.nombre,
+                            apellido = ActiveUser.apellido,
+                            correo = ActiveUser.correo,
+                            clave = ActiveUser.clave
+                        )
+
+                    userVielModel.updateUser(userItem)
+
+                    Toast.makeText(
+                        requireContext(),
+                        "La contraseña se ha guardado correctamente",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    configuracionUsaurioBinding.etContraseA.setText("")
+                    configuracionUsaurioBinding.etConfirmacion.setText("")
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Los campos de la contraseña están vacios", Toast.LENGTH_SHORT
+                    ).show()
+                }
             } else {
                 Toast.makeText(
                     requireContext(),
-                    "La contraseña no son iguales",
+                    "Las contraseñas no son iguales",
                     Toast.LENGTH_SHORT
                 ).show()
             }
-
         } else {
             Toast.makeText(
                 requireContext(),
@@ -119,8 +127,6 @@ class FragmentConfiguracionUsuario : Fragment() {
                 Toast.LENGTH_SHORT
             ).show()
         }
-
-
 
         ActiveUser.userName = configuracionUsaurioBinding.etUser.text.toString()
         ActiveUser.nombre = configuracionUsaurioBinding.etNombre.text.toString()

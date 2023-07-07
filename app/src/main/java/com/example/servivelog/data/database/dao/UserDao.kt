@@ -17,7 +17,6 @@ interface UserDao {
     @Query("SELECT * FROM tblUser ORDER BY idU")
    suspend fun getUserByUsername(): List<UserEntity>
 
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(user: UserEntity)
 

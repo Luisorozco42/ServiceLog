@@ -2,11 +2,9 @@ package com.example.servivelog.data.database.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.example.servivelog.domain.model.computer.ComputerItem
 import com.example.servivelog.domain.model.computer.InsertItem
-import javax.annotation.Nonnull
 
 @Entity("tblComputer")
 data class ComputerEntity(

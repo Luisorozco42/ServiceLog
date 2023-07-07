@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
+import com.example.servivelog.core.ex.onTextChanged
+import com.example.servivelog.core.ex.setErrorIfInvalid
 import com.example.servivelog.databinding.FragmentEditarLaboratorioBinding
 import com.example.servivelog.domain.model.lab.LabItem
 import com.example.servivelog.ui.gestionlaboratorio.viewmodel.GestionLabViewModel
@@ -44,14 +46,27 @@ class FragmentEditarLaboratorio : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         val btnEditar = editarLaboratoriosBinding.btnEditar
+        val nombreLabText = editarLaboratoriosBinding.NombreLabs
+        val tilNombreLabs = editarLaboratoriosBinding.tilLab
+        val tilDesc = editarLaboratoriosBinding.tilDesc
+        val descText = editarLaboratoriosBinding.etDescripcionLabs
+
+        descText.onTextChanged { tilDesc.setErrorIfInvalid(it, "La información ingresada no es válida", "El campo está vacío") }
+        nombreLabText.onTextChanged { tilNombreLabs.setErrorIfInvalid(it, "La información ingresada no es válida", "El campo está vacío") }
 
         btnEditar.setOnClickListener {
+
+            val nombreLab = editarLaboratoriosBinding.NombreLabs.text.toString().trim()
+            val desc = editarLaboratoriosBinding.etDescripcionLabs.text.toString().trim()
+
+            tilDesc.setErrorIfInvalid(nombreLab, "La información ingresada no es válida", "El campo está vacío")
+            tilNombreLabs.setErrorIfInvalid(desc, "La información ingresada no es válida", "El campo está vacío")
 
             CoroutineScope(Dispatchers.Main).launch {
 
                 val labs = gestionLabViewModel.getAllLabs()
-                val nombreLab = editarLaboratoriosBinding.NombreLabs.text.toString()
-                val desc = editarLaboratoriosBinding.etDescripcionLabs.text.toString()
+                val nombreLab = editarLaboratoriosBinding.NombreLabs.text.toString().trim()
+                val desc = editarLaboratoriosBinding.etDescripcionLabs.text.toString().trim()
                 val encontrado = labs.filter { it.nombre == nombreLab }
 
                 if (nombreLab.isNotEmpty() && desc.isNotEmpty()) {
@@ -75,6 +90,4 @@ class FragmentEditarLaboratorio : Fragment() {
 
         return editarLaboratoriosBinding.root
     }
-
-
 }

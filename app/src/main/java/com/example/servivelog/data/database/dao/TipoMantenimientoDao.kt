@@ -22,5 +22,4 @@ interface TipoMantenimientoDao {
 
     @Delete
     suspend fun deleteTipoMant(tipodMantenimientoEntity: TipodMantenimientoEntity)
-
 }

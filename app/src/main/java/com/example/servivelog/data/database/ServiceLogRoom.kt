@@ -1,6 +1,5 @@
 package com.example.servivelog.data.database
 
-import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.servivelog.data.database.dao.ComputerDao
@@ -23,7 +22,6 @@ import com.example.servivelog.data.database.entities.UserEntity
     exportSchema = false
 )
 abstract class ServiceLogRoom : RoomDatabase() {
-
     abstract fun computerDao(): ComputerDao
 
     abstract fun diagnosisDao(): DiagnosisDao

@@ -6,11 +6,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Environment
+import android.text.Layout.Alignment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -306,32 +305,57 @@ class DiagnosisAdapter(
             val documentacion = Paragraph("Documentacion:")
             document.add(documentacion)
 
-            var imagen:Image
+            document.add(Paragraph(" "))
+
+            val tableImages = PdfPTable(4) // Cambia el número de columnas según la cantidad de imágenes que deseas mostrar en una fila
+
+            var imagen: Image
+
             if (diag.ruta1 != "") {
                 imagen = Image.getInstance(diag.ruta1)
-                imagen.alignment = Element.ALIGN_CENTER
-                imagen.scaleAbsolute(200f, 200f)
-                document.add(imagen)
+                imagen.scaleAbsolute(70f, 70f)
+                val cell1 = PdfPCell(imagen)
+                cell1.border = PdfPCell.NO_BORDER
+                tableImages.addCell(cell1)
             }
+
             if (diag.ruta2 != "") {
                 imagen = Image.getInstance(diag.ruta2)
-                imagen.scaleAbsolute(200f, 200f)
-                imagen.alignment = Element.ALIGN_CENTER
-                document.add(imagen)
+                imagen.scaleAbsolute(70f, 70f)
+                val cell2 = PdfPCell(imagen)
+                cell2.border = PdfPCell.NO_BORDER
+                tableImages.addCell(cell2)
             }
 
             if (diag.ruta3 != "") {
                 imagen = Image.getInstance(diag.ruta3)
-                imagen.scaleAbsolute(200f, 200f)
-                imagen.alignment = Element.ALIGN_CENTER
-                document.add(imagen)
+                imagen.scaleAbsolute(70f, 70f)
+                val cell3 = PdfPCell(imagen)
+                cell3.border = PdfPCell.NO_BORDER
+                tableImages.addCell(cell3)
             }
+
             if (diag.ruta4 != "") {
                 imagen = Image.getInstance(diag.ruta4)
-                imagen.scaleAbsolute(200f, 200f)
-                imagen.alignment = Element.ALIGN_CENTER
-                document.add(imagen)
+                imagen.scaleAbsolute(70f, 70f)
+                val cell4 = PdfPCell(imagen)
+                cell4.border = PdfPCell.NO_BORDER
+                tableImages.addCell(cell4)
             }
+
+            document.add(tableImages)
+
+
+            val cb = pdfWriter.directContent
+            cb.setLineWidth(1f)
+            cb.moveTo(100f, 300f) // Coordenadas de inicio de la línea
+            cb.lineTo(200f, 300f) // Coordenadas de fin de la línea
+            cb.stroke()
+
+            // Segunda línea
+            cb.moveTo(400f, 300f) // Coordenadas de inicio de la segunda línea
+            cb.lineTo(500f, 300f) // Coordenadas de fin de la segunda línea
+            cb.stroke()
 
             document.close()
 
@@ -358,5 +382,4 @@ class DiagnosisAdapter(
         this.listD = listD
         notifyDataSetChanged()
     }
-
 }

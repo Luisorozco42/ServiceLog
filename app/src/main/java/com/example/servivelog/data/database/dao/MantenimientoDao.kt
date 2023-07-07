@@ -10,11 +10,9 @@ import com.example.servivelog.data.database.entities.MantenimientoEntity
 
 @Dao
 interface MantenimientoDao {
-
     @Query("SELECT * FROM tblMantenimiento ORDER BY idM")
     suspend fun getAllMaintenances(): List<MantenimientoEntity>
 
-    //Declaramos en el dao
     @Query("SELECT * FROM tblMantenimiento ORDER BY idM DESC")
     suspend fun getLastfourMaintenances(): List<MantenimientoEntity>
 

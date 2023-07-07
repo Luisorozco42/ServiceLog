@@ -13,6 +13,8 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
+import com.example.servivelog.core.ex.onTextChanged
+import com.example.servivelog.core.ex.setErrorIfInvalid
 import com.example.servivelog.databinding.FragmentEditMantenimientoBinding
 import com.example.servivelog.domain.model.computer.ComputerItem
 import com.example.servivelog.domain.model.lab.LabItem
@@ -48,6 +50,11 @@ class FragmentEditMantenimiento : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
+        val tilDescMant = editMantenimientoBinding.tilDescMant
+        val descMantText = editMantenimientoBinding.etDescripcion
+
+        descMantText.onTextChanged { tilDescMant.setErrorIfInvalid(it, "La información ingresada no es válida", "El campo está vacío") }
+
         ubicandoCheckbox()
         CoroutineScope(Dispatchers.Main).launch {
             val lab = gestionManteViewModel.getAllLabs()
@@ -83,7 +90,7 @@ class FragmentEditMantenimiento : Fragment() {
         val date = Date() // obtiene la fecha actual
         val formattedDate = dateFormat.format(date)
 
-        if (lab == null || comp == null || tipoMant == "" || editMantenimientoBinding.etDescripcion.text.toString()
+        if (lab == null || comp == null || tipoMant == "" || editMantenimientoBinding.etDescripcion.text.toString().trim()
                 .isEmpty()
         )
             Toast.makeText(

@@ -202,7 +202,7 @@ class FragmentGestionMantenimiento : Fragment(), MantenimientoAdapter.OnDeleteCl
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
         val datePickerDialog =
-            DatePickerDialog(requireContext(), { _, selectedYear, selectedMonth, selectedDay ->
+            DatePickerDialog(requireContext(), R.style.MyDatePickerDialogTheme, { _, selectedYear, selectedMonth, selectedDay ->
                 val selectedDate = Calendar.getInstance()
                 selectedDate.set(selectedYear, selectedMonth, selectedDay)
 
@@ -243,7 +243,7 @@ class FragmentGestionMantenimiento : Fragment(), MantenimientoAdapter.OnDeleteCl
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
         val datePickerDialog =
-            DatePickerDialog(requireContext(), { _, selectedYear, selectedMonth, selectedDay ->
+            DatePickerDialog(requireContext(), R.style.MyDatePickerDialogTheme, { _, selectedYear, selectedMonth, selectedDay ->
                 var selectedDate = Calendar.getInstance()
                 selectedDate.set(selectedYear, selectedMonth, selectedDay)
 

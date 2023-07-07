@@ -1,12 +1,10 @@
 package com.example.servivelog.data.database.entities
 
-import android.icu.text.SimpleDateFormat
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.servivelog.domain.model.mantenimiento.MantenimientoCUDItem
 import com.example.servivelog.domain.model.mantenimiento.MantenimientoItem
-import java.sql.Date
 
 @Entity("tblMantenimiento")
 data class MantenimientoEntity(

@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import com.example.servivelog.core.ex.onTextChanged
+import com.example.servivelog.core.ex.setErrorIfInvalid
 import com.example.servivelog.databinding.FragmentAgregarTipoMantBinding
 import com.example.servivelog.domain.model.tipoMantenimiento.InsertTipoMant
 import com.example.servivelog.ui.gestiontipomantenimiento.viewmodel.GestionTipoMantViewModel
@@ -29,7 +31,13 @@ class FragmentAgregarTipoMant : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
+        val tilTipoMant = agregarTipoMantBinding.tilTipoMant
+        val tipoMantText = agregarTipoMantBinding.etTipoMant
+
+        tipoMantText.onTextChanged { tilTipoMant.setErrorIfInvalid(it, "La información ingresada no es válida", "El campo está vacío") }
+
         agregarTipoMantBinding.btnGuardar.setOnClickListener {
+            tilTipoMant.setErrorIfInvalid(tipoMantText.text.toString(), "La información ingresada no es válida", "El campo está vacío")
             enviarDatos(it)
         }
 
@@ -40,10 +48,10 @@ class FragmentAgregarTipoMant : Fragment() {
 
         gestionTipoMantViewModel.onCreate()
         gestionTipoMantViewModel.modeloTipoMant.observe(viewLifecycleOwner) {
-            val tipoMant = it.find { it.nombre == agregarTipoMantBinding.txtNombreTipoMant.text.toString() }
-            if (agregarTipoMantBinding.txtNombreTipoMant.text.toString() != "") {
+            val tipoMant = it.find { it.nombre == agregarTipoMantBinding.etTipoMant.text.toString() }
+            if (agregarTipoMantBinding.etTipoMant.text.toString() != "") {
                 if (tipoMant == null) {
-                    gestionTipoMantViewModel.insertTipoMant(InsertTipoMant(agregarTipoMantBinding.txtNombreTipoMant.text.toString()))
+                    gestionTipoMantViewModel.insertTipoMant(InsertTipoMant(agregarTipoMantBinding.etTipoMant.text.toString()))
                     val navController = Navigation.findNavController(view)
                     navController.popBackStack()
                 } else {

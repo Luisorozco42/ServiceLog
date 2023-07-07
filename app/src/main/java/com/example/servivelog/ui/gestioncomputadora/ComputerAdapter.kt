@@ -17,7 +17,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
 class ComputerAdapter(
     var context: Context,
     var listC: List<ComputerItem>,
@@ -60,7 +59,6 @@ class ComputerAdapter(
     fun setOnDeleteClickListener(listener: OnDeleteClickListener) {
         onDeleteClickListener = listener
     }
-
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         val compList: ComputerItem = listC[position]

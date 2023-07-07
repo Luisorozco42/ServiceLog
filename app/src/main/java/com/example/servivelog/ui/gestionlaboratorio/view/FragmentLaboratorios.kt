@@ -1,7 +1,6 @@
 package com.example.servivelog.ui.gestionlaboratorio.view
 
 import android.app.AlertDialog
-import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
@@ -18,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.servivelog.R
 import com.example.servivelog.databinding.FragmentLaboratoriosBinding
-import com.example.servivelog.domain.model.computer.ComputerItem
 import com.example.servivelog.domain.model.lab.LabItem
 import com.example.servivelog.ui.MainActivity
 import com.example.servivelog.ui.gestionlaboratorio.LabAdapter
@@ -26,7 +23,6 @@ import com.example.servivelog.ui.gestionlaboratorio.viewmodel.GestionLabViewMode
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class FragmentLaboratorios : Fragment(), LabAdapter.OnDeleteClickListener {
@@ -41,9 +37,7 @@ class FragmentLaboratorios : Fragment(), LabAdapter.OnDeleteClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         laboratorioBinding = FragmentLaboratoriosBinding.inflate(layoutInflater)
-
     }
 
     override fun onCreateView(
@@ -116,5 +110,4 @@ class FragmentLaboratorios : Fragment(), LabAdapter.OnDeleteClickListener {
         dialog.getButton(AlertDialog.BUTTON_NEGATIVE)?.setBackgroundColor(Color.RED)
         dialog.getButton(AlertDialog.BUTTON_POSITIVE)?.setBackgroundColor(Color.GREEN)
     }
-
 }

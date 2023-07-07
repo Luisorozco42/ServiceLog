@@ -19,6 +19,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.viewpager.widget.ViewPager
+import com.example.servivelog.core.ex.onTextChanged
+import com.example.servivelog.core.ex.setErrorIfInvalid
 import com.example.servivelog.databinding.FragmentAgregarDiagnosticoBinding
 import com.example.servivelog.domain.model.computer.ComputerItem
 import com.example.servivelog.domain.model.diagnosis.InsertDiagnosis
@@ -91,6 +93,10 @@ class FragmentAgregarDiagnostico : Fragment() {
 
         val btnAgregar = agregarDiagnosticoBinding.btnGuardar
         val btnFoto = agregarDiagnosticoBinding.btnFoto
+        val tilDescDiag = agregarDiagnosticoBinding.tilDescDiag
+        val descDiagText = agregarDiagnosticoBinding.etDescripcionDiagnostico
+
+        descDiagText.onTextChanged { tilDescDiag.setErrorIfInvalid(it, "La información ingresada no es válida", "El campo está vacío") }
 
         CoroutineScope(Dispatchers.Main).launch {
             val lab = gestionDiagnosisViewModel.getAllLaboratories()
@@ -120,13 +126,13 @@ class FragmentAgregarDiagnostico : Fragment() {
 
 
         btnAgregar.setOnClickListener {
+            tilDescDiag.setErrorIfInvalid(descDiagText.text.toString(), "La información ingresada no es válida", "El campo está vacío")
             agregarDatos(it)
         }
 
 
         btnFoto.setOnClickListener {
             openGallery()
-
         }
 
         return agregarDiagnosticoBinding.root
@@ -230,8 +236,8 @@ class FragmentAgregarDiagnostico : Fragment() {
     private fun agregarDatos(view: View) {
 
         lifecycleScope.launch {
-            val datoL = agregarDiagnosticoBinding.ctvLabD.text.toString()
-            val datoC = agregarDiagnosticoBinding.ctvServiceTag.text.toString()
+            val datoL = agregarDiagnosticoBinding.ctvLabD.text.toString().trim()
+            val datoC = agregarDiagnosticoBinding.ctvServiceTag.text.toString().trim()
             val lab = gestionDiagnosisViewModel.getAllLaboratories()
             val labI = lab.filter { it.nombre == datoL }
             val comp = gestionDiagnosisViewModel.getAllComputer()
@@ -312,5 +318,4 @@ class FragmentAgregarDiagnostico : Fragment() {
         val adapter = AutotextComptAdapter(requireActivity(), android.R.layout.simple_dropdown_item_1line ,comp.map { it.serviceTag })
         agregarDiagnosticoBinding.ctvServiceTag.setAdapter(adapter)
     }
-
 }

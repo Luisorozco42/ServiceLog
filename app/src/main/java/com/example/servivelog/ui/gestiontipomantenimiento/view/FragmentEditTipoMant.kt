@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
+import com.example.servivelog.core.ex.onTextChanged
+import com.example.servivelog.core.ex.setErrorIfInvalid
 import com.example.servivelog.databinding.FragmentEditTipoMantBinding
 import com.example.servivelog.domain.model.tipoMantenimiento.TipoMantItem
 import com.example.servivelog.ui.gestiontipomantenimiento.viewmodel.GestionTipoMantViewModel
@@ -30,7 +32,7 @@ class FragmentEditTipoMant : Fragment() {
 
     private fun obteniendoDatos() {
         tipoMantItem = args.tipoMant
-        fragmentEditTipoMantBinding.NombreLabs.setText(tipoMantItem.nombre)
+        fragmentEditTipoMantBinding.etTipoMant.setText(tipoMantItem.nombre)
     }
 
     override fun onCreateView(
@@ -38,6 +40,11 @@ class FragmentEditTipoMant : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
+        val tilTipoMant = fragmentEditTipoMantBinding.tilTipoMant
+        val tipoMantText = fragmentEditTipoMantBinding.etTipoMant
+
+        tipoMantText.onTextChanged { tilTipoMant.setErrorIfInvalid(it, "La información ingresada no es válida", "El campo está vacío") }
+
         fragmentEditTipoMantBinding.btnGuardar.setOnClickListener{
             actualizarDatos(it)
         }
@@ -47,11 +54,11 @@ class FragmentEditTipoMant : Fragment() {
     private fun actualizarDatos(view: View) {
         gestionTipoMantViewModel.onCreate()
         gestionTipoMantViewModel.modeloTipoMant.observe(viewLifecycleOwner){
-            val lista = it.filter { it.nombre.uppercase() == fragmentEditTipoMantBinding.NombreLabs.text.toString().uppercase() }
+            val lista = it.filter { it.nombre.uppercase() == fragmentEditTipoMantBinding.etTipoMant.text.toString().uppercase() }
 
             if (lista.isEmpty()){
-                if (fragmentEditTipoMantBinding.NombreLabs.text.toString() != ""){
-                    tipoMantItem.nombre = fragmentEditTipoMantBinding.NombreLabs.text.toString()
+                if (fragmentEditTipoMantBinding.etTipoMant.text.toString() != ""){
+                    tipoMantItem.nombre = fragmentEditTipoMantBinding.etTipoMant.text.toString()
                     gestionTipoMantViewModel.updateTipoMant(tipoMantItem)
                     val navController = Navigation.findNavController(view)
                     navController.popBackStack()

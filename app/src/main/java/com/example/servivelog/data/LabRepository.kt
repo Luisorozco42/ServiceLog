@@ -13,21 +13,20 @@ class LabRepository @Inject constructor(
         val response: LabEntity = labDao.getLabByLabN(lab)
         return response.toDomain()
     }
+
     suspend fun getAllLabs(): List<LabItem>{
         val response: List<LabEntity> = labDao.getAllLabs()
         return response.map { it.toDomain() }
     }
-    fun getLabById(idL: Int): LabItem{
-        val response: LabEntity = labDao.getLabById(idL)
-        return response.toDomain()
 
-    }
     suspend fun insertLab(lab: LabEntity){
         labDao.insertLab(lab)
     }
+
     suspend fun updateLab(lab: LabEntity){
         labDao.updateLab(lab)
     }
+
     suspend fun deleteLab(lab: LabEntity){
         labDao.deleteLab(lab)
     }

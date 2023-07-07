@@ -1,10 +1,5 @@
 package com.example.servivelog.data
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
 import com.example.servivelog.data.database.dao.DiagnosisDao
 import com.example.servivelog.data.database.entities.DiagnosisEntity
 import com.example.servivelog.domain.model.diagnosis.DiagnosisItem
@@ -14,8 +9,6 @@ import javax.inject.Inject
 class DiagnosisRepository @Inject constructor(
     private val diagnosisDao: DiagnosisDao
 ) {
-
-
     suspend fun getAllDiagnosis(): List<DiagnosisItem> {
         val response: List<DiagnosisEntity> = diagnosisDao.getAllDiagnosis()
         return response.map { it.toDomain() }
@@ -30,11 +23,9 @@ class DiagnosisRepository @Inject constructor(
         diagnosisDao.insertDiagnosis(diagnosis)
     }
 
-
     suspend fun updatetDiagnosis(diagnosis: DiagnosisEntity) {
         diagnosisDao.updatetDiagnosis(diagnosis)
     }
-
 
     suspend fun deleteDiagnosis(diagnosis: DiagnosisEntity) {
         diagnosisDao.deleteDiagnosis(diagnosis)

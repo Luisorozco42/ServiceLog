@@ -27,87 +27,116 @@
                 android:id="@+id/tvUserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:text="User name"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
-
-            <EditText
-                android:id="@+id/etUser"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilUsuario"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:autofillHints="name"
-                android:hint="@string/ingrese_su_usuario"
-                android:inputType="text"
-                />
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:autofillHints="name"
+                    android:hint="@string/Ingrese_su_usuario"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/tvNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_marginTop="35dp"
                 android:text="@string/nombres"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/etNombre"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNombre"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:autofillHints="name"
-                android:hint="@string/ingrese_su_nombre"
-                android:inputType="text" />
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:autofillHints="name"
+                    android:hint="@string/ingrese_su_nombre"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/tvApelldios"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/apellidos"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/etApellido"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilApellido"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:autofillHints="name"
-                android:hint="@string/ingrese_su_apellido"
-                android:inputType="text"
-                app:startIconScaleType="centerCrop" />
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etApellido"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:autofillHints="name"
+                    android:hint="@string/ingrese_su_apellido"
+                    android:inputType="text"
+                    app:startIconScaleType="centerCrop" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/tvCorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/correo_electronico"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/etCorreo"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilCorreo"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:autofillHints="emailAddress"
-                android:hint="@string/ingrese_su_correo_electronico"
-                android:inputType="textEmailAddress"
-                app:startIconScaleType="centerCrop" />
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etCorreo"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:autofillHints="emailAddress"
+                    android:hint="@string/ingrese_su_correo_electronico"
+                    android:inputType="textEmailAddress"
+                    app:startIconScaleType="centerCrop" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/tvContraseña"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/contrase_a"
                 android:textSize="19sp"
@@ -115,31 +144,32 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilContra"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:passwordToggleEnabled="true"
                 android:hint="ingrese su contraseña">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tiContraseña"
+                    android:id="@+id/etContraseña"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:inputType="textPassword"
-                />
+                    android:layout_margin="16dp"
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/tvConfirmar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/confirmar_contrase_a"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilConfirmarContra"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Confirme su contraseña"
@@ -149,10 +179,9 @@
                     android:id="@+id/etConfirmarContraseña"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="16dp"
                     android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <Button
                 android:id="@+id/btnRegistrase"
@@ -162,8 +191,6 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/registrarse"
                 android:textSize="20sp" />
-
-
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

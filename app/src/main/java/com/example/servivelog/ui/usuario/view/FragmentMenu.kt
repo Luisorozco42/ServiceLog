@@ -14,7 +14,6 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.servivelog.R
 import com.example.servivelog.databinding.FragmentMenuBinding
-import com.example.servivelog.domain.model.computer.ComputerItem
 import com.example.servivelog.domain.model.diagnosis.DiagnosisItem
 import com.example.servivelog.domain.model.mantenimiento.MantenimientoCUDItem
 import com.example.servivelog.ui.MainActivity
@@ -22,8 +21,6 @@ import com.example.servivelog.ui.usuario.adapters.DashboardD
 import com.example.servivelog.ui.usuario.adapters.DashboardM
 import com.example.servivelog.ui.usuario.viewmodel.UserViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
-
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -90,16 +87,17 @@ class FragmentMenu : Fragment() {
 
         val fechaLimite = calendar.time
         var contador = 0
-        var last4MM: MutableList<MantenimientoCUDItem> = mutableListOf()
 
         for (m in listaM) {
             val fecha = formato.parse(m.dia)
-            if (fecha.after(fechaLimite) || fecha == fechaLimite){
+            if (fecha.after(fechaLimite) || fecha == fechaLimite)
                 contador++
-                last4MM.add(m)
-            }
         }
-        setdashboardM(last4MM.subList(0, minOf(last4MM.size, 4)))
+
+        CoroutineScope(Dispatchers.Main).launch {
+            setdashboardM(userViewModel.getLastMaintenance())
+        }
+
         return contador
     }
     private fun showExitConfirmationDialog() {
@@ -130,19 +128,18 @@ class FragmentMenu : Fragment() {
 
         val fechaLimite = calendar.time
         var contador = 0
-        val lastMD: MutableList<DiagnosisItem> = mutableListOf()
 
         for (d in listaD) {
             val fecha = formato.parse(d.fecha)
             if (fecha.after(fechaLimite) || fecha == fechaLimite ) {
                 contador++
-                lastMD.add(d)
             }
         }
 
-        setdashboardD(lastMD.subList(0, minOf(lastMD.size, 4)))
+        CoroutineScope(Dispatchers.Main).launch {
+            setdashboardD(userViewModel.getlastDiagnosis())
+        }
+
         return contador
-
     }
-
 }

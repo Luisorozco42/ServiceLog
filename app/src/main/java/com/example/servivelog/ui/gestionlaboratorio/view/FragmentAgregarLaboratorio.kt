@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import com.example.servivelog.core.ex.onTextChanged
+import com.example.servivelog.core.ex.setErrorIfInvalid
 import com.example.servivelog.databinding.FragmentAgregarLaboratorioBinding
 import com.example.servivelog.domain.model.lab.InsertLab
 import com.example.servivelog.domain.model.lab.LabItem
@@ -21,6 +23,7 @@ import kotlinx.coroutines.launch
 class FragmentAgregarLaboratorio : Fragment() {
     private lateinit var agregarLaboratorioBinding: FragmentAgregarLaboratorioBinding
     private val gestionLabViewModel: GestionLabViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         agregarLaboratorioBinding = FragmentAgregarLaboratorioBinding.inflate(layoutInflater)
@@ -31,15 +34,21 @@ class FragmentAgregarLaboratorio : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-
+        val editTextLayNombreLab = agregarLaboratorioBinding.tilLab
+        val editTextNombreLab = agregarLaboratorioBinding.NombreLabs
+        val editTextLayDesc = agregarLaboratorioBinding.tilDes
+        val editTextDesc = agregarLaboratorioBinding.etDescripcionLabs
         val btnAgregar = agregarLaboratorioBinding.btnGuardar
+
+        editTextDesc.onTextChanged { editTextLayDesc.setErrorIfInvalid(it,"La información ingresada no es válida", "El campo está vacío, ") }
+        editTextNombreLab.onTextChanged { editTextLayNombreLab.setErrorIfInvalid(it, "La información ingresada no es válida", "El campo está vacío") }
 
         btnAgregar.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
 
                 val labs = gestionLabViewModel.getAllLabs()
-
                 val response = enviarDatos(labs)
+
                 if (response.nombre != ""){
                     gestionLabViewModel.insertLab(response)
                     val navController = Navigation.findNavController(it)
@@ -47,7 +56,6 @@ class FragmentAgregarLaboratorio : Fragment() {
                 }else{
                     Toast.makeText(requireContext(), "El laboratorio, ya existe o faltan datos", Toast.LENGTH_SHORT).show()
                 }
-
             }
         }
 
@@ -56,9 +64,14 @@ class FragmentAgregarLaboratorio : Fragment() {
 
     private fun enviarDatos(labs: List<LabItem>): InsertLab {
 
-        val lab = labs.filter { it.nombre == agregarLaboratorioBinding.NombreLabs.text.toString() }
-        val nombreL = agregarLaboratorioBinding.NombreLabs.text.toString()
-        val desc = agregarLaboratorioBinding.etDescripcionLabs.text.toString()
+        val editTextLayNombreLab= agregarLaboratorioBinding.tilLab
+        val editTextLayDesc = agregarLaboratorioBinding.tilDes
+        val lab = labs.filter { it.nombre == agregarLaboratorioBinding.NombreLabs.text.toString().trim() }
+        val nombreL = agregarLaboratorioBinding.NombreLabs.text.toString().trim()
+        val desc = agregarLaboratorioBinding.etDescripcionLabs.text.toString().trim()
+
+        editTextLayDesc.setErrorIfInvalid(desc, "La información ingresada no es válida", "El campo está vacío")
+        editTextLayNombreLab.setErrorIfInvalid(nombreL, "La información ingresada no es válida", "El campo está vacío")
 
         if (lab.isNotEmpty() || nombreL.isEmpty() || desc.isEmpty()) {
             return InsertLab("", "")
@@ -68,6 +81,4 @@ class FragmentAgregarLaboratorio : Fragment() {
                 descripcion = agregarLaboratorioBinding.etDescripcionLabs.text.toString()
             )
     }
-
-
 }

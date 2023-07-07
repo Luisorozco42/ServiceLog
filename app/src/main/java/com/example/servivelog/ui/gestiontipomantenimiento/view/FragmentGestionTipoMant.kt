@@ -68,5 +68,4 @@ class FragmentGestionTipoMant : Fragment(), TipoMantAdapter.OnDeleteClickListene
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
         recyclerView.adapter = adapter
     }
-
 }

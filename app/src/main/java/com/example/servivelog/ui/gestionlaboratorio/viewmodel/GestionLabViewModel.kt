@@ -3,11 +3,8 @@ package com.example.servivelog.ui.gestionlaboratorio.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.servivelog.data.database.entities.toDatabase
-import com.example.servivelog.data.database.entities.toInsertDatabase
-import com.example.servivelog.domain.computerusecase.GetAllComputer
-import com.example.servivelog.domain.labusecase.GetAllLab
-import com.example.servivelog.domain.labusecase.RUDLab
+import com.example.servivelog.domain.ComputerUseCase
+import com.example.servivelog.domain.LaboratoryUseCase
 import com.example.servivelog.domain.model.computer.ComputerItem
 import com.example.servivelog.domain.model.lab.InsertLab
 import com.example.servivelog.domain.model.lab.LabItem
@@ -17,9 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GestionLabViewModel @Inject constructor(
-    private val getAllLab: GetAllLab,
-    private val rudLab: RUDLab,
-    private val getAllComputer: GetAllComputer
+    private val laboratoryUseCase: LaboratoryUseCase,
+    private val computerUseCase: ComputerUseCase
 ) : ViewModel() {
     val modeloLab = MutableLiveData<List<LabItem>>()
     val loader = MutableLiveData<Boolean>()
@@ -28,7 +24,7 @@ class GestionLabViewModel @Inject constructor(
     fun onCreate() {
         viewModelScope.launch {
             loader.postValue(true)
-            var result = getAllLab()
+            var result = laboratoryUseCase()
             if (!result.isEmpty()) {
                 modeloLab.postValue(result)
                 loader.postValue(false)
@@ -40,32 +36,29 @@ class GestionLabViewModel @Inject constructor(
         }
     }
 
-    fun getLabById(idL: Int): LabItem {
-        return rudLab.getLabById(idL)
-    }
-
     fun insertLab(lab: InsertLab) {
         viewModelScope.launch {
-            rudLab.insertLab(lab)
+            laboratoryUseCase.insertLab(lab)
         }
     }
 
     fun updateLab(lab: LabItem) {
         viewModelScope.launch {
-            rudLab.updateLab(lab)
+            laboratoryUseCase.updateLab(lab)
         }
     }
 
     fun deleteLab(lab: LabItem) {
         viewModelScope.launch {
-            rudLab.deleteLab(lab)
+            laboratoryUseCase.deleteLab(lab)
         }
     }
+
     suspend fun getAllLabs(): List<LabItem>{
-        return getAllLab()
+        return laboratoryUseCase()
     }
 
     suspend fun getAllComps(): List<ComputerItem>{
-        return getAllComputer()
+        return computerUseCase()
     }
 }

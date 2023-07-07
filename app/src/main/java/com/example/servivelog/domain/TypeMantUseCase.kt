@@ -1,4 +1,4 @@
-package com.example.servivelog.domain.tipoMantenimientoUseCase
+package com.example.servivelog.domain
 
 import com.example.servivelog.data.TipoMantenimientoRepository
 import com.example.servivelog.data.database.entities.toDatabase
@@ -7,9 +7,13 @@ import com.example.servivelog.domain.model.tipoMantenimiento.InsertTipoMant
 import com.example.servivelog.domain.model.tipoMantenimiento.TipoMantItem
 import javax.inject.Inject
 
-class CUD @Inject constructor(
+class TypeMantUseCase @Inject constructor(
     private val repository: TipoMantenimientoRepository
 ){
+    suspend operator fun invoke(): List<TipoMantItem>{
+        val data = repository.getAllTipoMantenimiento()
+        return data
+    }
 
     suspend fun insertTipoMant(insertTipoMant: InsertTipoMant){
         repository.insertTipoMant(insertTipoMant.toInsertDatabase())

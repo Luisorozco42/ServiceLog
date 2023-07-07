@@ -18,8 +18,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_margin="16dp"
                 android:text="Editar Diagnostico"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -27,8 +26,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="11dp"
-                android:layout_marginTop="20dp"
+                android:layout_margin="16dp"
                 android:text="Laboratorio"
                 android:textSize="19sp"
                 android:textStyle="bold" />
@@ -73,6 +71,7 @@
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDescDiag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 

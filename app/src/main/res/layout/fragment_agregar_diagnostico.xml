@@ -18,8 +18,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_margin="16dp"
                 android:text="Agregar diagnóstico"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -27,8 +26,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="11dp"
-                android:layout_marginTop="20dp"
+                android:layout_margin="16dp"
                 android:text="Laboratorio"
                 android:textSize="19sp"
                 android:textStyle="bold" />
@@ -36,18 +34,17 @@
             <AutoCompleteTextView
                 android:id="@+id/ctvLabD"
                 android:layout_width="match_parent"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_height="55dp"
                 android:completionThreshold="1"
-                android:hint="Laboratorio P 1"
+                android:hint="Laboratorio P1"
                 android:textSize="17sp"
                 android:textAlignment="center"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="11dp"
-                android:layout_marginTop="20dp"
+                android:layout_margin="16dp"
                 android:text="Service Tag de la computadora"
                 android:textSize="19sp"
                 android:textStyle="bold" />
@@ -55,7 +52,7 @@
             <AutoCompleteTextView
                 android:id="@+id/ctvServiceTag"
                 android:layout_width="match_parent"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_height="55dp"
                 android:completionThreshold="1"
                 android:hint="@string/ServiceTagExp"
@@ -66,13 +63,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="11dp"
-                android:layout_marginTop="20dp"
+                android:layout_margin="16dp"
                 android:text="Descripción del diagnóstico"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDescDiag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -80,7 +77,7 @@
                     android:id="@+id/etDescripcionDiagnostico"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:layout_margin="10dp"
+                    android:layout_margin="16dp"
                     android:textAlignment="center"
                     tools:text="Mucho texto de descripcion" />
             </com.google.android.material.textfield.TextInputLayout>

@@ -259,5 +259,4 @@ class FragmentDiagnostico : Fragment(), DiagnosisAdapter.OnDeleteClickListener {
 
         datePickerDialog.show()
     }
-
 }

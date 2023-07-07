@@ -18,7 +18,7 @@
                 android:id="@+id/tvRegistropc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_marginEnd="210dp"
                 android:text="Agregar computadora"
                 android:textSize="25sp"
@@ -28,13 +28,14 @@
                 android:id="@+id/tvnombrepce"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_marginEnd="210dp"
                 android:text="Nombre"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
@@ -52,13 +53,14 @@
                 android:id="@+id/tvdescripcionpcedt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_marginEnd="210dp"
                 android:text="Descripcion"
                 android:textSize="19sp"
                 android:textStyle="bold"/>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDescripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
@@ -76,13 +78,14 @@
                 android:id="@+id/tvmarcapce"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_marginEnd="210dp"
                 android:text="Marca"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilMarca"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
@@ -99,13 +102,14 @@
                 android:id="@+id/tvModelo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_marginEnd="210dp"
                 android:text="Modelo"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilModelo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
@@ -122,13 +126,14 @@
                 android:id="@+id/tvProcesador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_marginEnd="210dp"
                 android:text="procesador"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilProcesadord"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
@@ -145,13 +150,14 @@
                 android:id="@+id/tvRam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_marginEnd="210dp"
                 android:text="Ram"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilRam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
@@ -168,13 +174,14 @@
                 android:id="@+id/tvAlmacenamiento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_marginEnd="210dp"
                 android:text="Almacenamiento"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilAlmacenamiento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
@@ -191,13 +198,14 @@
                 android:id="@+id/tvServiceTag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_marginEnd="210dp"
                 android:text="service Tag"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilServiceTag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
@@ -215,13 +223,14 @@
                 android:id="@+id/tvInventario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_marginEnd="210dp"
                 android:text="No. Inventario"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNoInventario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
@@ -238,7 +247,7 @@
                 android:id="@+id/tvUbicacion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:layout_marginEnd="210dp"
                 android:text="Ubicacion"
                 android:textSize="19sp"
@@ -266,10 +275,6 @@
                 android:text="Agregar"
                 android:textSize="20sp" />
 
-
         </LinearLayout>
-
     </ScrollView>
-
-
 </FrameLayout>

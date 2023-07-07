@@ -1,4 +1,4 @@
-package com.example.servivelog.domain.computerusecase
+package com.example.servivelog.domain
 
 import com.example.servivelog.data.ComputerRepository
 import com.example.servivelog.data.LabRepository
@@ -8,18 +8,18 @@ import com.example.servivelog.domain.model.computer.InsertItem
 import com.example.servivelog.domain.model.lab.LabItem
 import javax.inject.Inject
 
-class RUDComputer @Inject constructor(
-    private val computerRepository: ComputerRepository,
+//para preparar la clase es @ + Inject after escribis constructor()
+class ComputerUseCase @Inject constructor(//preparamos la clase para usar inject
+    private val computerRepository: ComputerRepository, //asi se injecta la clase repository
     private val labRepository: LabRepository
 ) {
-    suspend fun getallLabs(): List<LabItem> {
-        return labRepository.getAllLabs()
+   //invoke funciona como una funcion rapida para llamar datos en este caso.
+    suspend operator fun invoke(): List<ComputerItem>{
+        return computerRepository.getAllComputers()
     }
 
-    //mando a llamar a la pc atraves del id , abajo declaro la funcion similar
-    //a la fun CRespository
-    fun getComputerById(idC: Int): ComputerItem {
-        return computerRepository.getComputerById(idC)
+    suspend fun getallLabs(): List<LabItem> {
+        return labRepository.getAllLabs()
     }
 
     //insertamos en la bd y usamos un mapper para acomadar los dtos en la otra dataClass

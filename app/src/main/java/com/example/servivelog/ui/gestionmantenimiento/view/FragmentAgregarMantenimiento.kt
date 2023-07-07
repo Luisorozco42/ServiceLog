@@ -6,13 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.servivelog.R
+import com.example.servivelog.core.ex.onTextChanged
+import com.example.servivelog.core.ex.setErrorIfInvalid
 import com.example.servivelog.databinding.FragmentAgregarMantenimientoBinding
 import com.example.servivelog.domain.model.computer.ComputerItem
 import com.example.servivelog.domain.model.lab.LabItem
@@ -49,6 +50,10 @@ class FragmentAgregarMantenimiento : Fragment() {
         // Inflate the layout for this fragment
         ubicandoCheckbox()
         val agregarbtn = agregarMantenimientoBinding.btnAgregar
+        val tilDescMant = agregarMantenimientoBinding.tilDescMant
+        val descMantText = agregarMantenimientoBinding.etDescripcion
+
+        descMantText.onTextChanged { tilDescMant.setErrorIfInvalid(it, "La información ingresada no es válida", "El campo está vacío") }
 
         agregarMantenimientoBinding.tvAddMant.setOnClickListener{
             val navController = Navigation.findNavController(it)
@@ -61,10 +66,12 @@ class FragmentAgregarMantenimiento : Fragment() {
         }
 
         agregarbtn.setOnClickListener {
+
+            tilDescMant.setErrorIfInvalid(descMantText.text.toString(), "La información ingresada no es válida", "El campo está vacío")
+
             CoroutineScope(Dispatchers.Main).launch{
                 val listL = gestionManteViewModel.getAllLabs()
                 val listC = gestionManteViewModel.getAllComputers()
-
                 val insertMantenimiento: MantenimientoItem = enviarDatos(listL, listC)
 
                 if (insertMantenimiento.labname == "" || insertMantenimiento.computadora == "")
@@ -101,13 +108,12 @@ class FragmentAgregarMantenimiento : Fragment() {
 
         val lab = listL.find { it.nombre == agregarMantenimientoBinding.ctvLab.text.toString() }
         val comp = listC.find { it.serviceTag == agregarMantenimientoBinding.ctvServiceTag.text.toString() }
-        val desc = agregarMantenimientoBinding.etDescripcion.text.toString()
+        val desc = agregarMantenimientoBinding.etDescripcion.text.toString().trim()
         val tipoMant = confirmarCheckBox()
 
         if (lab == null || comp == null || tipoMant == "" || desc.isEmpty()){
             return MantenimientoItem("","","","","")
         }else{
-
 
             val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()) //con este formato vamos a trabajar
             val date = Date() // se obtiene la fecha actual
@@ -121,7 +127,6 @@ class FragmentAgregarMantenimiento : Fragment() {
                 formattedDate
             )
         }
-
     }
 
     private fun ubicandoCheckbox() {

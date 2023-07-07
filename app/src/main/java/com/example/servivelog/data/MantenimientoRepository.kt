@@ -10,11 +10,11 @@ import javax.inject.Inject
 class MantenimientoRepository @Inject constructor(
     private val mantenimientoDao: MantenimientoDao
 ) {
-
     suspend fun getAllMantenimientos(): List<MantenimientoCUDItem>{
         val response: List<MantenimientoEntity> = mantenimientoDao.getAllMaintenances()
         return response.map { it.toDomainCUD() }
     }
+
     //declaramos la fun en el repositorio de mantenimiento
     suspend fun getLastfourMaintenances(): List<MantenimientoCUDItem> {
         val response: List<MantenimientoEntity> = mantenimientoDao.getLastfourMaintenances()

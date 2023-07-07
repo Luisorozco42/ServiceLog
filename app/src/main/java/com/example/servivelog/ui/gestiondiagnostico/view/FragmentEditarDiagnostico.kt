@@ -21,6 +21,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager.widget.ViewPager
+import com.example.servivelog.core.ex.onTextChanged
+import com.example.servivelog.core.ex.setErrorIfInvalid
 import com.example.servivelog.domain.model.computer.ComputerItem
 import com.example.servivelog.domain.model.diagnosis.DiagnosisItem
 import com.example.servivelog.domain.model.lab.LabItem
@@ -138,6 +140,10 @@ class FragmentEditarDiagnostico : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val btnEditar = editarDiagnosticoBinding.btnEditar
+        val tilDescDiag = editarDiagnosticoBinding.tilDescDiag
+        val descDiagText = editarDiagnosticoBinding.etDescripcionDiagnostico
+
+        descDiagText.onTextChanged { tilDescDiag.setErrorIfInvalid(it, "La información ingresada no es válida", "El campo está vacío") }
 
         CoroutineScope(Dispatchers.Main).launch {
             val lab = gestionDiagnosisViewModel.getAllLaboratories()
@@ -145,18 +151,22 @@ class FragmentEditarDiagnostico : Fragment() {
         }
 
         btnEditar.setOnClickListener {
+
+            tilDescDiag.setErrorIfInvalid(descDiagText.text.toString(), "La información ingresada no es válida", "El campo está vacío")
+
             lifecycleScope.launch {
-                val datoL = editarDiagnosticoBinding.ctvLabD.text.toString()
-                val datoC = editarDiagnosticoBinding.ctvServiceTag.text.toString()
+                val datoL = editarDiagnosticoBinding.ctvLabD.text.toString().trim()
+                val datoC = editarDiagnosticoBinding.ctvServiceTag.text.toString().trim()
                 val lab = gestionDiagnosisViewModel.getAllLaboratories()
                 val labI = lab.filter { it.nombre == datoL }
                 val comp = gestionDiagnosisViewModel.getAllComputer()
                 val compL = comp.filter { it.ubicacion == datoL }
+                val descDiag = editarDiagnosticoBinding.etDescripcionDiagnostico.text.toString().trim()
 
-                if ((labI.isNotEmpty() && labI.size <= 1) && compL.isNotEmpty() && datoL != "" && datoC != ""){
-                    diagnosisItem.nombrelab = editarDiagnosticoBinding.ctvLabD.text.toString()
-                    diagnosisItem.ServiceTag = editarDiagnosticoBinding.ctvServiceTag.text.toString()
-                    diagnosisItem.descripcion = editarDiagnosticoBinding.etDescripcionDiagnostico.text.toString()
+                if ((labI.isNotEmpty() && labI.size <= 1) && compL.isNotEmpty() && datoL != "" && datoC != "" && descDiag.isNotEmpty()){
+                    diagnosisItem.nombrelab = datoL
+                    diagnosisItem.ServiceTag = datoC
+                    diagnosisItem.descripcion = descDiag
 
                     if (!imageAdapter.hasImageAtPosition(0)) {
                         diagnosisItem.ruta1 = ""
@@ -183,7 +193,6 @@ class FragmentEditarDiagnostico : Fragment() {
                     Toast.makeText(requireContext(), "Hay datos no existentes o falta que ingresen datos", Toast.LENGTH_SHORT).show()
             }
         }
-
         return editarDiagnosticoBinding.root
     }
 
